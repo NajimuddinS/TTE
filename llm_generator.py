@@ -6,7 +6,7 @@ def get_schedule_summary(markdown_table):
     """
     Sends the timetable to the Groq LLM for a natural language summary.
     """
-    groq_api_key = "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"
+    groq_api_key = os.environ.get("GROQ_API_KEY")
     if not groq_api_key:
         return "ERROR: Groq API Key not found. Please set the GROQ_API_KEY environment variable."
 
