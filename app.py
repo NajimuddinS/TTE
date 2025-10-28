@@ -31,7 +31,7 @@ if uploaded_file is not None:
     markdown_data = df_to_markdown_table(df)
 
     # --- 3. Summarization and Response Generation ---
-    if st.button("Generate AI Schedule Summary 🤖", type="primary"):
+    if st.button("Generate AI Schedule Summary", type="primary"):
         with st.spinner("Step 3/3: Sending data to LLM and generating summary... "):
             # --- 🆕 Capture both summary and usage data ---
             summary_text, usage_data = get_schedule_summary(markdown_data)
