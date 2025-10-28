@@ -13,7 +13,6 @@ def get_schedule_summary(markdown_table):
     try:
         client = Groq(api_key=groq_api_key)
 
-        # 🎯 Strategic Prompt Engineering is KEY
         system_prompt = (
             "You are an expert AI assistant specializing in schedule analysis and "
             "timetable summarization. Your task is to analyze the provided weekly class "
@@ -39,16 +38,22 @@ def get_schedule_summary(markdown_table):
         Start your response with a friendly greeting like "Hello! I've analyzed your schedule..."
         """
 
-        # Using a fast and capable model from Groq
         chat_completion = client.chat.completions.create(
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}
             ],
-            model="llama-3.1-8b-instant",  # Excellent speed and reasoning
+            model="llama-3.1-8b-instant",
         )
 
-        return chat_completion.choices[0].message.content
+        summary_text = chat_completion.choices[0].message.content
+        usage_data = {
+            "prompt_tokens": chat_completion.usage.prompt_tokens,
+            "completion_tokens": chat_completion.usage.completion_tokens,
+            "total_tokens": chat_completion.usage.total_tokens
+        }
+
+        return summary_text, usage_data
 
     except Exception as e:
-        return f"An error occurred during LLM processing: {e}"
+        return f"An error occurred during LLM processing: {e}", {}
