@@ -27,8 +27,10 @@ def get_schedule_summary(markdown_table):
         Your summary must include:
         1. **Total Days/Classes:** Which days of the week have classes and the total number of unique subjects.
         2. **Time Range:** The earliest start time and the latest end time across the entire week.
-        3. **Longest/Shortest Day:** Mention the day with the most classes or longest duration.
-        4. **Detailed Schedule:** Provide a breakdown of the schedule for All days in a week.
+        3. **About Lecturers:** Who are the lecturers involved (if that info is available).
+        4. **Highlights:** Any notable patterns, such as back-to-back classes, long
+        5. **Longest/Shortest Day:** Mention the day with the most classes or longest duration.
+        6. **Detailed Schedule:** Provide a breakdown of the schedule for All days in a week.
 
         ---
         TIMETABLE DATA:
